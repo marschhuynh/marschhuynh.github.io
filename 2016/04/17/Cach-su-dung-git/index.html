@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Khái quát về Git và cách sử dụng cơ bản | Marsch&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="git,team work" />
+    
+    <meta name="description" content="Git là gì ?
+Về nguồn gốc GIT là một hệ thống quản lý phiên bản phân tán, vốn được phát triển nhằm quản lý mã nguồn của Linux.
+Đối với lập trình viên thì GIT giống như một cổ máy thời gian vậy, có khi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Khái quát về Git và cách sử dụng cơ bản">
+<meta property="og:url" content="http://skymarsch.com/2016/04/17/Cach-su-dung-git/index.html">
+<meta property="og:site_name" content="Marsch's Blog">
+<meta property="og:description" content="Git là gì ?
+Về nguồn gốc GIT là một hệ thống quản lý phiên bản phân tán, vốn được phát triển nhằm quản lý mã nguồn của Linux.
+Đối với lập trình viên thì GIT giống như một cổ máy thời gian vậy, có khi">
+<meta property="og:image" content="http://skymarsch.com/2016/04/17/Cach-su-dung-git/logo-git.png">
+<meta property="og:updated_time" content="2016-08-06T07:14:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Khái quát về Git và cách sử dụng cơ bản">
+<meta name="twitter:description" content="Git là gì ?
+Về nguồn gốc GIT là một hệ thống quản lý phiên bản phân tán, vốn được phát triển nhằm quản lý mã nguồn của Linux.
+Đối với lập trình viên thì GIT giống như một cổ máy thời gian vậy, có khi">
+<meta name="twitter:image" content="http://skymarsch.com/2016/04/17/Cach-su-dung-git/logo-git.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-76668084-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header" style="background-image: url('/css/images/background-header.jpg');background-position-x: 50%;background-position-y: 77%;background-size: 100%;">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Technical-skill/">Technical skill</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Technical-skill/">Technical skill</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Cach-su-dung-git" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Khái quát về Git và cách sử dụng cơ bản
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/04/17/Cach-su-dung-git/" class="article-date">
+    <time datetime="2016-04-17T10:34:17.000Z" itemprop="datePublished">2016-04-17</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/team-work/">team work</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="logo-git.png" alt=""></p>
+<h3 id="Git-la-gi"><a href="#Git-la-gi" class="headerlink" title="Git là gì ?"></a>Git là gì ?</h3><ul>
+<li>Về nguồn gốc GIT là một hệ thống quản lý phiên bản phân tán, vốn được phát triển nhằm quản lý mã nguồn của Linux.</li>
+<li>Đối với lập trình viên thì GIT giống như một cổ máy thời gian vậy, có khi còn thần thánh hơn nữa á chứ.</li>
+</ul>
+<h3 id="Vay-tai-sao-phai-dung-Git"><a href="#Vay-tai-sao-phai-dung-Git" class="headerlink" title="Vậy tại sao phải dùng Git"></a>Vậy tại sao phải dùng Git</h3><ul>
+<li><p>Hãy tưởng tượng rằng khi chúng ta làm việc nhóm, cùng viết một chương trình gì đó. Team gồm có 5 người<br>mỗi người code một module rồi dùng usb copy lại sao :v, khá là vất vả.</p>
+</li>
+<li><p>Đó là chưa kể đến việc nhiều người cũng chỉnh sửa 1 file rồi sau này tìm kiếm chỗ khác nhau mà ghép lại thì mờ mắt lun :))</p>
+</li>
+<li><p>Dùng hay không thì không ai bắt ép chúng ta cả, nói thật bây giờ bảo mình code một cái gì đó mà không được dùng Git thì chẵn khác nào bảo mình có người yêu mà không được gặp vậy :v ( mình vẫn còn FA).</p>
+</li>
+<li><p>Mình đưa ra vài ví dụ vậy thôi, đợi khi nào GIT trả mình tiền PR rồi mình viết thêm :3</p>
+</li>
+</ul>
+<h3 id="Cach-dung-Git-co-ban"><a href="#Cach-dung-Git-co-ban" class="headerlink" title="Cách dùng Git cơ bản"></a>Cách dùng Git cơ bản</h3><h4 id="Cac-tu-khoa-co-ban-trong-Git"><a href="#Cac-tu-khoa-co-ban-trong-Git" class="headerlink" title="Các từ khóa cơ bản trong Git"></a>Các từ khóa cơ bản trong Git</h4><ol>
+<li><p>Repository: Nó là nơi chưa tất cả các thông tin của một project do git quản lý. Nói chung nó là một cái khó chưa code của mình :D. Viết tắt là repo.</p>
+<ul>
+<li><p>Có hai loại repo là:</p>
+<ul>
+<li>Local: Là cái kho chưa trong máy của mình.</li>
+<li>Remote: Là cái kho ở trên server chuyên dụng cho Git có thể kể đến như github.com, gitlab.com.<br> <img src="git-repo.png" alt=""></li>
+</ul>
+</li>
+<li><p>Local là nơi mà mình sẽ làm việc ở trên máy, còn khi nào mình muốn chia sẽ công việc (code) của mình cho người khác thì mình “push” lên server. Hoặc ngược lại mình muốn lấy code của người khác thì mình “pull” từ server về.</p>
+</li>
+</ul>
+</li>
+<li><p>Branch: Nhánh theo mình hiểu thì nó giống như một workspace hay giống như một ngữ cảnh. Vậy vai trò của nhánh là gì.</p>
+<ul>
+<li>Trong git có một nhánh chính có tên là “master”. Khi bạn muốn thử nghiệm một chức năng mới trên sản phẩm của mình bạn có thể tạo ra một nhánh khác ví dụ như “NewStyle” sau đó làm việc trên nhánh này mà không hề ảnh hướng đến nhánh master hay công việc của các thành viên khác trong nhóm. Sau khi thử nghiệm thành công bạn có thể merge lại vào nhánh master nếu muốn.<br>   <img src="git-branch.png" alt=""></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Như trên hình thì chúng ta có 4 branch là:<ul>
+<li>master ( màu xanh lá)</li>
+<li>Add new feature</li>
+<li>Fix bug in video display</li>
+<li>Add a slide bar</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>Merge: Đây là một công việc khi bạn hoàn thành một chức năng hay một thử nghiệm và muốn đưa nó vào sản phẩm của mình, hay bạn muốn đưa code của mình gộp lại cùng với các thành viên khác trong team.</p>
+</li>
+<li><p>Conflict: Xung đột thường xảy ra khi chúng ta tiến hành merge mà lúc đó có 1 file bị thay đổi bởi 2 nhánh khác nhau.</p>
+<ul>
+<li>Ví dụ: Nhánh A sửa file abc.txt và nhánh B cũng sủa file abc.txt, trong một số trường hợp đơn giản git có thể tiến hành auto merge chong chúng ta nhưng trong một số trường hợp phức tạp hơn thì git sẽ báo là conflict để chúng ta tự merge 2 nhánh lại với nhau.</li>
+</ul>
+</li>
+<li><p>Commit: Đây là một hành động mà chúng ta thao tác nhiều nhất khi dùng git. Hành động này lưu lại các trạng thái của các file đang được theo dõi. Nói nôm na nó như là chúng ta lưu lại game sau khi chơi qua phần vậy.</p>
+</li>
+</ol>
+<h4 id="Cac-thao-tac-co-ban-khi-dung-git"><a href="#Cac-thao-tac-co-ban-khi-dung-git" class="headerlink" title="Các thao tác cơ bản khi dùng git"></a>Các thao tác cơ bản khi dùng git</h4><ol>
+<li><p>Init một local repo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Thêm các file để git theo dõi</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Cú pháp trên thêm tất cả các file tại node thử mục hiện tại (đây là cú pháp thường dùng), nếu như bạn muốn thêm một file nào đó ví dụ như file abc.txt thì làm như sau.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add abc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"Some thing you want to commit"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Nếu như bạn không dùng tham số -m thì thì sau khi bạn gõ lên <code>git commit</code> sẽ hiện ra một console giống như vim để bạn nhập vào message</p>
+<p>Lưu ý trước khi commit thì các bạn phải <code>git add .</code> trước nhé</p>
+</blockquote>
+</li>
+<li><p>Xem lại log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>git log có các tham số thường dùng như <code>--oneline</code> hay <code>--graph</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph</span><br></pre></td></tr></table></figure>
+<p>Các bạn nên test để biết cụ thể 2 lệnh trên làm gì nhé ;)</p>
+</li>
+<li><p>Checkout</p>
+<p>Lệnh <code>git checkout</code> có 2 chức năng chính là chuyển về trạng thái của một commit hoặc là chuyển sang một nhánh khác</p>
+<ul>
+<li><p>Để chuyển về trạng thái của một commit trước đó ta làm như sau:</p>
+<ul>
+<li><p>Xem mã băm của commit mà bạn muốn quay về</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Kết quả sẽ có dạng như sau</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b031e33 Add xyz.txt</span><br><span class="line">772932c Add abc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bây giờ bạn muốn quay lại commit nào thì thực hiện lệnh như sau, ở đây mình muốn quay lại commit “Add abc.txt”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 772932c</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Để kiểm tra các bạn xem lại log là thấy liền nhé :D. Cuộc đời mà đươc quản lý bằng git thì tốt biết mấy :v</p>
+<p>À nếu các bạn muốn quay lại commit mới nhất thì cứ <code>checkout</code> lại branch khi nãy nhé, ở đây là master.</p>
+</li>
+<li><p>Để tạo ra một brand mới</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="string">"NewBranch"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Merge 2 nhánh lại với nhau</p>
+<blockquote>
+<p>Giả sử bạn muôn merge nhánh NewStyle vào nhánh master thì trước hết bạn phải ở nhánh master đã nhé</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge NewStyle</span><br></pre></td></tr></table></figure>
+<p>Vậy chúng ta sẽ làm gì khi bị conflict:</p>
+<ul>
+<li>Sau khi thực hiện lệnh merge xong bạn sử dụng lệnh <code>get status</code> để xem merge thành công hay bị conflict, nếu bị conflict thì sẽ có dạng như sau:</li>
+</ul>
+<p><img src="git-conflict.png" alt=""></p>
+<ul>
+<li>Các file màu xanh là những file merge thành công, còn màu đỏ là file bị conflict.</li>
+<li>Mở file bị conflict ra các bạn sẽ thấy như sau:<br><img src="git-conflict-2.png" alt=""></li>
+<li>Đoạn conflict được chia ra làm 2 phần bởi dấu =======, phần trên là của local repo (hay chính là đoạn code mà chúng ta đã thay đổi) và phần trên là của remote repo (hay là của người khác)</li>
+<li>Để fix bạn tiến hành xóa 1 trong 2 phần là xong ;)</li>
+<li>Fix xong thì bạn dùng lệnh <code>git add .</code> để thêm file vừa fix xong rồi commit lại nhé <code>git commit -m &quot;Fix conflict&quot;</code></li>
+</ul>
+</li>
+<li><p>Tiếp theo mình sẽ hướng dẫn việc sử dụng pull and push để lấy code về và đưa code lên remote repo</p>
+<ol>
+<li><p>Pull là hành động lấy code từ trên remote repo về local repo</p>
+<blockquote>
+<p>Để pull về code của nhánh master</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Để pull về code của một branch cụ thể ta dùng lệnh sau</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin NewStyle</span><br></pre></td></tr></table></figure>
+<p>Lưu ý: <code>origin</code> là tên của remote repo còn <code>NewStyle</code> là tên của branch trên remote repo</p>
+<blockquote>
+<p>Sau khi pull code về có thể xảy ra conflict, các bạn cứ fix như bình thường sau đó commit lại là ok.</p>
+</blockquote>
+</li>
+<li><p>Push là hành động đưa code từ local repo lên remote repo</p>
+<blockquote>
+<p>Các bạn lưu ý là trước khi push code lên phải pull code về trước.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin NewStyle</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="Tren-la-khai-quat-va-cach-dung-co-ban-cua-git-minh-xin-phep-ket-thuc-bai-tai-day-nhe"><a href="#Tren-la-khai-quat-va-cach-dung-co-ban-cua-git-minh-xin-phep-ket-thuc-bai-tai-day-nhe" class="headerlink" title="Trên là khái quát và cách dùng cơ bản của git, mình xin phép kết thúc bài tại đây nhé ;)"></a>Trên là khái quát và cách dùng cơ bản của git, mình xin phép kết thúc bài tại đây nhé ;)</h4>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://skymarsch.com/2016/04/17/Cach-su-dung-git/" data-id="ciriunc8n0001gpuhh70asxov" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/marsch_huynh" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/marsch.huynh" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/04/20/Cach-tao-DrawerLayout-trong-android/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Cách tạo DrawerLayout trong android
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/06/16/Fix-grub-when-cant-boot-by-reinstall-grub/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/06/16/Fix-grub-when-cant-boot-by-reinstall-grub/grub2_brown1-478x360.png)" alt="Fix grub when can&#39;t boot by reinstall grub" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/16/Fix-grub-when-cant-boot-by-reinstall-grub/" class="title">Fix grub when can&#39;t boot by reinstall grub</a></p>
+                            <p class="item-date"><time datetime="2016-06-16T08:51:52.000Z" itemprop="datePublished">2016-06-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/20/Cach-tao-DrawerLayout-trong-android/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/04/20/Cach-tao-DrawerLayout-trong-android/sliding-menu.png)" alt="Cách tạo DrawerLayout trong android" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2016/04/20/Cach-tao-DrawerLayout-trong-android/" class="title">Cách tạo DrawerLayout trong android</a></p>
+                            <p class="item-date"><time datetime="2016-04-20T05:38:00.000Z" itemprop="datePublished">2016-04-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/Cach-su-dung-git/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/04/17/Cach-su-dung-git/logo-git.png)" alt="Khái quát về Git và cách sử dụng cơ bản" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Technical-skill/">Technical skill</a></p>
+                            <p class="item-title"><a href="/2016/04/17/Cach-su-dung-git/" class="title">Khái quát về Git và cách sử dụng cơ bản</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T10:34:17.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technical-skill/">Technical skill</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grub/">grub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/layout/">layout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/team-work/">team work</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Marsch Huynh</p>
+                <!-- <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p> -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'marschsblog';
+    
+    
+    var disqus_url = 'http://skymarsch.com/2016/04/17/Cach-su-dung-git/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
